@@ -1,0 +1,89 @@
+
+body {
+    padding-top: 56px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+/* Hero elegante */
+.hero {
+  min-height: 80vh;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+              url('images/fondo-hero.jpg') center/cover no-repeat;
+  color: #fff;
+  text-align: center;
+  padding-top: 80px; /* margen para la navbar fija */
+}
+
+.hero .btn {
+  border-radius: 30px;
+  padding: 12px 25px;
+  transition: all 0.3s ease;
+}
+
+.hero .btn-primary {
+  background-color:#d4af37;
+  border: none;
+}
+
+.hero .btn-primary:hover {
+  background-color: #806a22;
+}
+
+.hero .btn-outline-light:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #1c1f26 !important;
+}
+.navbar-brand, .nav-link {
+    color: #f5f5f5 !important;
+}
+.nav-link:hover {
+    color: #d4af37 !important;
+}
+/* Sección títulos */
+h2 {
+    color: #1c1f26;
+    font-weight: 600;
+}
+/* Tarjetas de certificaciones */
+.cert-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none;
+}
+.cert-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.cert-card .card-body {
+    background-color: #ffffff;
+}
+.cert-card h5 {
+    color: #2c2f36;
+}
+
+.modal-content {
+  border-radius: 12px;
+  overflow: hidden;
+}
+.modal-body img {
+  max-height: 500px;
+  object-fit: contain;
+}
+
+
+/* Footer */
+footer {
+    background: #1c1f26;
+    color: #f5f5f5;
+    padding: 1rem 0;
+    text-align: center;
+    margin-top: 3rem;
+}
+footer a {
+    color: #d4af37;
+    text-decoration: none;
+}
