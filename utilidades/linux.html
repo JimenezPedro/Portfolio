@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comandos Linux</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/styles.css" rel="stylesheet"> <!-- Tu mismo CSS de estilos -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/index.html">
+        <img src="/images/favicon.png" alt="Logo"  width="100" height="80" class="rounded-circle">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/index.html#about">Sobre mí</a></li>
+          <li class="nav-item"><a class="nav-link" href="/index.html#certifications">Certificaciones</a></li>
+          <li class="nav-item"><a class="nav-link" href="/utilidades.html">Utilidades</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero d-flex align-items-center justify-content-center">
+    <div class="container text-center">
+      <h1 class="display-4 fw-bold">Comandos Linux</h1>
+      <p class="lead">Guía rápida de los comandos más usados en Linux</p>
+    </div>
+  </section>
+
+  <!-- Contenido -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="mb-4 text-center">Categorías</h2>
+      <div class="row g-4">
+        
+        <!-- Navegación -->
+        <div class="col-md-4">
+          <div class="card shadow-sm h-100 cert-card">
+            <div class="card-body">
+              <h5 class="card-title">Navegación</h5>
+              <ul>
+                <li><code>pwd</code> → Muestra la ruta actual</li>
+                <li><code>ls</code> → Lista archivos en el directorio</li>
+                <li><code>cd [ruta]</code> → Cambia de directorio</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Archivos y directorios -->
+        <div class="col-md-4">
+          <div class="card shadow-sm h-100 cert-card">
+            <div class="card-body">
+              <h5 class="card-title">Archivos y Directorios</h5>
+              <ul>
+                <li><code>touch archivo.txt</code> → Crear archivo vacío</li>
+                <li><code>mkdir carpeta</code> → Crear carpeta</li>
+                <li><code>rm archivo</code> → Eliminar archivo</li>
+                <li><code>rm -r carpeta</code> → Eliminar carpeta</li>
+                <li><code>cp origen destino</code> → Copiar archivos</li>
+                <li><code>mv origen destino</code> → Mover/renombrar</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Procesos -->
+        <div class="col-md-4">
+          <div class="card shadow-sm h-100 cert-card">
+            <div class="card-body">
+              <h5 class="card-title">Procesos</h5>
+              <ul>
+                <li><code>ps aux</code> → Lista procesos activos</li>
+                <li><code>top</code> → Monitor en tiempo real</li>
+                <li><code>kill -9 PID</code> → Finaliza un proceso</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Permisos -->
+        <div class="col-md-4">
+          <div class="card shadow-sm h-100 cert-card">
+            <div class="card-body">
+              <h5 class="card-title">Permisos</h5>
+              <ul>
+                <li><code>chmod 755 archivo</code> → Cambia permisos</li>
+                <li><code>chown usuario:grupo archivo</code> → Cambia propietario</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Red -->
+        <div class="col-md-4">
+          <div class="card shadow-sm h-100 cert-card">
+            <div class="card-body">
+              <h5 class="card-title">Red</h5>
+              <ul>
+                <li><code>ping google.com</code> → Verificar conectividad</li>
+                <li><code>ifconfig / ip a</code> → Mostrar interfaces de red</li>
+                <li><code>curl url</code> → Obtener datos de una URL</li>
+                <li><code>scp archivo usuario@host:/ruta</code> → Copiar por SSH</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Utilidades -->
+        <div class="col-md-4">
+          <div class="card shadow-sm h-100 cert-card">
+            <div class="card-body">
+              <h5 class="card-title">Utilidades</h5>
+              <ul>
+                <li><code>man comando</code> → Manual del comando</li>
+                <li><code>history</code> → Historial de comandos</li>
+                <li><code>clear</code> → Limpiar la terminal</li>
+                <li><code>echo "texto"</code> → Imprimir texto</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+    <!-- OverTheWire -->
+  <section id="overthewire" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="mb-4 text-center">Práctica recomendada: OverTheWire</h2>
+      <p class="text-center">
+        Una de las mejores formas de aprender Linux y seguridad básica es el juego de retos
+        <a href="https://overthewire.org/wargames/bandit/" target="_blank" class="fw-bold text-decoration-none">OverTheWire: Bandit</a>.  
+        Aquí tienes un resumen de los primeros niveles y los comandos clave para resolverlos:
+      </p>
+
+      <div class="row g-4 mt-4">
+        <!-- Nivel 0 -->
+        <div class="col-md-6">
+          <div class="card shadow-sm h-100 cert-card">
+            <div class="card-body">
+              <h5 class="card-title">Nivel 0 → 1</h5>
+              <p>Conectarse al servidor vía SSH.</p>
+              <ul>
+                <li><code>ssh bandit0@bandit.labs.overthewire.org -p 2220</code> → Acceder al nivel inicial.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nivel 1 -->
+        <div class="col-md-6">
+          <div class="card shadow-sm h-100 cert-card">
+            <div class="card-body">
+              <h5 class="card-title">Nivel 1 → 2</h5>
+              <p>Leer un archivo llamado <code>-</code>.</p>
+              <ul>
+                <li><code>cat ./-</code> → Leer un archivo con nombre especial.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nivel 2 -->
+        <div class="col-md-6">
+          <div class="card shadow-sm h-100 cert-card">
+            <div class="card-body">
+              <h5 class="card-title">Nivel 2 → 3</h5>
+              <p>El archivo está dentro de una carpeta llamada <code>spaces in this filename</code>.</p>
+              <ul>
+                <li><code>cat "spaces in this filename/archivo"</code> → Manejar espacios en nombres.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nivel 3 -->
+        <div class="col-md-6">
+          <div class="card shadow-sm h-100 cert-card">
+            <div class="card-body">
+              <h5 class="card-title">Nivel 3 → 4</h5>
+              <p>El archivo está oculto.</p>
+              <ul>
+                <li><code>ls -a</code> → Mostrar archivos ocultos.</li>
+                <li><code>cat .hidden</code> → Leer archivo oculto.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nivel 4 -->
+        <div class="col-md-6">
+          <div class="card shadow-sm h-100 cert-card">
+            <div class="card-body">
+              <h5 class="card-title">Nivel 4 → 5</h5>
+              <p>El archivo con la clave está en un directorio con muchos archivos.</p>
+              <ul>
+                <li><code>file *</code> → Identificar archivos de texto.</li>
+                <li><code>cat archivo.txt</code> → Leer la clave.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nivel 5 -->
+        <div class="col-md-6">
+          <div class="card shadow-sm h-100 cert-card">
+            <div class="card-body">
+              <h5 class="card-title">Nivel 5 → 6</h5>
+              <p>Buscar un archivo con permisos específicos.</p>
+              <ul>
+                <li><code>find . -type f -size 1033c ! -executable</code> → Filtrar por tamaño y permisos.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="https://overthewire.org/wargames/bandit/" target="_blank" class="btn btn-primary">
+          Ir a OverTheWire
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Pedro Jiménez - Portafolio</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
