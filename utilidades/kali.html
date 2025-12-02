@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instalación kali</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/Portfolio/styles.css" rel="stylesheet"> 
+  <link rel="icon" type="image/png" href="/Portfolio/images/favicon.png">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="./index.html">
+        <img src="/Portfolio/images/favicon.png" alt="Logo" width="100" height="80" class="rounded-circle">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/Portfolio/index.html#about">Sobre mí</a></li>
+          <li class="nav-item"><a class="nav-link" href="/Portfolio/index.html#certifications">Certificaciones</a></li>
+          <li class="nav-item"><a class="nav-link" href="/Portfolio/utilidades.html">Utilidades</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero hero-small" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/fondo-hero.jpg') center/cover no-repeat; padding-top:80px;">
+    <div class="container">
+      <h1 class="display-6 fw-bold">Instalación completa de Kali Linux</h1>
+      <p class="lead mb-0">Guía práctica paso a paso — descarga, verificación, creación de USB booteable, instalación y configuración post-instalación.</p>
+    </div>
+  </section>
+
+  <!-- Contenido -->
+  <main class="py-5">
+    <div class="container">
+
+      <!-- Introducción -->
+      <section class="mb-5">
+        <h2 class="mb-3">Introducción</h2>
+        <p>
+          Esta guía te acompaña desde la <strong>descarga</strong> de la ISO oficial de Kali hasta los <strong>ajustes post-instalación</strong>.
+          Antes de empezar: <strong>haz copia de seguridad</strong> de tus datos y lee cada paso con calma. Si vas a reemplazar un sistema existente, asegúrate de tener respaldo.
+        </p>
+        <div class="note mb-3">
+          <strong>Aviso de seguridad:</strong> Descarga siempre la ISO desde la web oficial (<em>kali.org</em>) y verifica su firma/sha256 antes de usarla.
+        </div>
+      </section>
+
+      <!-- Requisitos -->
+      <section class="mb-5">
+        <h2 class="mb-3">Requisitos recomendados</h2>
+        <ul>
+          <li>CPU x86_64 (64-bit) — arquitectura recomendada.</li>
+          <li>Al menos 4 GB de RAM (8 GB o más recomendado para tareas intensivas).</li>
+          <li>40 GB de espacio en disco (más si vas a instalar muchas herramientas).</li>
+          <li>Puerto USB y unidad USB (8 GB o más) o unidad DVD si usas medios ópticos.</li>
+          <li>Conexión a Internet (recomendada durante la instalación para paquetes).</li>
+        </ul>
+      </section>
+
+      <!-- Descarga y verificación -->
+      <section class="mb-5">
+        <h2 class="mb-3">1) Descargar y verificar la ISO</h2>
+
+        <h5 class="mt-3">Descarga</h5>
+        <p>
+          Ve a <a href="https://www.kali.org/get-kali/" target="_blank">https://www.kali.org/get-kali/</a> y descarga la imagen ISO adecuada (normalmente <code>Installer</code> o <code>Live</code> 64-bit).
+        </p>
+
+        <h5 class="mt-3">Verificar SHA256</h5>
+        <p>
+          En el sitio oficial encontrarás el <em>SHA256 checksum</em>. Descargado el archivo ISO y el checksum, en Linux/macOS:
+        </p>
+        <div class="code-block mb-3"><pre><code># Calcula sha256 del ISO
+sha256sum kali-<versión>.iso
+
+# Compara con el sha256 provisto en la web
+</code></pre></div>
+
+        <h5 class="mt-3">Verificar firma GPG (recomendado)</h5>
+        <p>
+          Si la web provee una firma GPG, descarga también la firma y la clave pública del proyecto para verificar la autenticidad.
+        </p>
+        <div class="code-block mb-3"><pre><code># Importar clave pública del equipo de Kali (ejemplo genérico)
+gpg --keyserver keyserver.ubuntu.com --recv-keys <KEYID>
+
+# Verificar la firma
+gpg --verify kali-<versión>.iso.sig kali-<versión>.iso
+</code></pre></div>
+
+        <div class="note">
+          Si la comprobación SHA o GPG falla, <strong>no uses</strong> la ISO: vuelve a descargarla o consulta la web oficial.
+        </div>
+      </section>
+
+      <!-- Crear USB booteable -->
+      <section class="mb-5">
+        <h2 class="mb-3">2) Crear USB booteable</h2>
+
+        <p>Dependiendo de tu sistema operativo, tienes varias opciones:</p>
+
+        <h6 class="mt-3">Windows</h6>
+        <ul>
+          <li><strong>Rufus</strong> — muy usado y sencillo (selecciona la ISO y el modo <em>DD</em> si te lo pide).</li>
+          <li><strong>balenaEtcher</strong> — interfaz simple, menos opciones avanzadas.</li>
+        </ul>
+        <div class="code-block mb-3"><pre><code># (No es un comando de Windows; usar la GUI de Rufus o Etcher)
+</code></pre></div>
+
+        <h6 class="mt-3">macOS</h6>
+        <ul>
+          <li>balenaEtcher (recomendado por simplicidad)</li>
+          <li>o usar <code>dd</code> desde la terminal (avanzado):</li>
+        </ul>
+        <div class="code-block mb-3"><pre><code># Encuentra el identificador del USB (ej. /dev/disk2)
+diskutil list
+
+# Desmonta el USB
+diskutil unmountDisk /dev/diskN
+
+# Escribe la ISO (reemplaza /dev/rdiskN y kali.iso)
+sudo dd if=kali-<versión>.iso of=/dev/rdiskN bs=4M status=progress && sync
+</code></pre></div>
+
+        <h6 class="mt-3">Linux</h6>
+        <ul>
+          <li>balenaEtcher o <code>dd</code> (igual que macOS).</li>
+        </ul>
+        <div class="code-block mb-3"><pre><code># Identificar el dispositivo USB (ej. /dev/sdb)
+lsblk
+
+# Escribir la ISO (reemplaza /dev/sdX por tu USB)
+sudo dd if=kali-<versión>.iso of=/dev/sdX bs=4M status=progress && sync
+</code></pre></div>
+
+        <div class="note">
+          Usar <code>dd</code> es poderoso pero peligroso: asegúrate de apuntar al dispositivo correcto para no sobrescribir disco del sistema.
+        </div>
+      </section>
+
+      <!-- BIOS/UEFI -->
+      <section class="mb-5">
+        <h2 class="mb-3">3) Ajustes BIOS / UEFI</h2>
+        <ul>
+          <li>Arranca el equipo desde la unidad USB. Normalmente tecla <em>F12</em>, <em>Esc</em>, <em>F9</em> o similar.</li>
+          <li>Si tienes UEFI, desactiva temporalmente <strong>Secure Boot</strong> si el instalador falla a la hora de cargar drivers. (Kali puede soportar Secure Boot en algunas builds, pero si tienes problemas, desactívalo).</li>
+          <li>Asegúrate de que el modo de arranque está en UEFI o Legacy según tu preferencia.</li>
+          <li>Si quieres instalar junto a otro SO (dual-boot), consulta particionado manual y haz backups.</li>
+        </ul>
+      </section>
+
+      <!-- Instalación gráfica -->
+      <section class="mb-5">
+        <h2 class="mb-3">4) Instalación (Graphical/Installer)</h2>
+
+        <div class="step mb-3">
+          <h5>Paso a paso (resumen)</h5>
+          <ol>
+            <li>Arranca desde el USB y elige <strong>Graphical install</strong> o <strong>Install</strong>.</li>
+            <li>Selecciona idioma, zona horaria y layout de teclado.</li>
+            <li>Configura red (si estás en red con DHCP normalmente se configura sola).</li>
+            <li>Configura el nombre de host (hostname) — por ejemplo <code>kali</code>.</li>
+            <li>Configura usuario y contraseña: crea un usuario estándar (no root) y contraseña segura.</li>
+            <li>Particionado del disco — elige <em>Guided – use entire disk</em> para instalación sencilla, o <em>Manual</em> para control total.</li>
+            <li>Si te pide, instala GRUB en el dispositivo de arranque (p. ej. <code>/dev/sda</code>).</li>
+            <li>Finaliza la instalación y reinicia retirando el USB.</li>
+          </ol>
+        </div>
+
+        <h6 class="mt-3">Particionado (opciones)</h6>
+        <p>
+          - <strong>Guided - use entire disk</strong>: elimina todo y crea particiones automáticamente (rápido).<br>
+          - <strong>Manual</strong>: usa LVM, cifrado de disco (recomendado si manejas datos sensibles) o particionado avanzado.
+        </p>
+
+        <div class="note mb-3">
+          Si necesitas cifrar el disco: el instalador ofrece LUKS. Anota la passphrase en un lugar seguro: sin ella no podrás recuperar los datos.
+        </div>
+      </section>
+
+      <!-- Post-instalación -->
+      <section class="mb-5">
+        <h2 class="mb-3">5) Configuración post-instalación</h2>
+
+        <h5 class="mt-2">Actualizar sistema</h5>
+        <div class="code-block mb-3"><pre><code>sudo apt update
+sudo apt -y full-upgrade
+sudo reboot
+</code></pre></div>
+
+        <h5 class="mt-2">Instalar metapaquetes útiles</h5>
+        <p>Los metapaquetes agrupan herramientas. Elige el que prefieras:</p>
+        <div class="code-block mb-3"><pre><code># Ejemplos (puede variar según la versión)
+sudo apt install -y kali-linux-default
+# o para una instalación más completa
+sudo apt install -y kali-linux-large
+# o instalar conjuntos concretos
+sudo apt install -y kali-tools-top10
+</code></pre></div>
+        <div class="note mb-3">
+          Los nombres de metapaquetes pueden cambiar entre versiones. Consulta <em>apt search kali-linux</em> si no aparecen.
+        </div>
+
+        <h5>Habilitar SSH (opcional)</h5>
+        <div class="code-block mb-3"><pre><code># Instalar y habilitar OpenSSH
+sudo apt install -y openssh-server
+sudo systemctl enable --now ssh
+sudo systemctl status ssh
+</code></pre></div>
+
+        <h5>Configurar usuario root (opcional)</h5>
+        <p>Hoy en día Kali usa usuario normal por defecto. Si necesitas establecer contraseña para <code>root</code>:</p>
+        <div class="code-block mb-3"><pre><code>sudo passwd root
+# Para cambiar a root:
+su - root
+</code></pre></div>
+        <div class="note mb-3">
+          Mantener el uso de un usuario estándar y <code>sudo</code> es más seguro en la mayoría de casos.
+        </div>
+
+        <h5>Instalar herramientas adicionales (ejemplos)</h5>
+        <div class="code-block mb-3"><pre><code># Ejemplos rápidos
+sudo apt install -y git curl wget net-tools nmap python3-pip
+# Instalar pip packages si los necesitas
+pip3 install --user pwntools
+</code></pre></div>
+
+      </section>
+
+      <!-- Consejos y troubleshooting -->
+      <section class="mb-5">
+        <h2 class="mb-3">6) Consejos y solución de problemas</h2>
+
+        <h6 class="mt-2">Problemas comunes</h6>
+        <ul>
+          <li><strong>No arranca desde USB:</strong> revisa la prioridad de arranque en BIOS/UEFI y prueba con otra herramienta para crear el USB (Etcher / Rufus).</li>
+          <li><strong>Error con Secure Boot:</strong> desactívalo temporalmente en UEFI.</li>
+          <li><strong>Problemas de red en instalación:</strong> prueba conectar por cable o configurar DNS manualmente.</li>
+          <li><strong>Paquetes rotos:</strong>
+            <div class="code-block mt-2"><pre><code>sudo apt --fix-broken install
+sudo dpkg --configure -a
+</code></pre></div>
+          </li>
+        </ul>
+
+        <h6 class="mt-2">Buenas prácticas</h6>
+        <ul>
+          <li>Activa cifrado si vas a manejar datos sensibles.</li>
+          <li>Usa contraseñas robustas y un gestor de contraseñas.</li>
+          <li>Mantén el sistema actualizado (<code>apt update && apt full-upgrade</code> regularmente).</li>
+          <li>Evita usar root de forma persistente; usa <code>sudo</code> cuando haga falta.</li>
+        </ul>
+      </section>
+
+      <!-- Recursos -->
+      <section class="mb-5">
+        <h2 class="mb-3">Recursos útiles</h2>
+        <ul>
+          <li><a href="https://www.kali.org" target="_blank">Kali Linux — sitio oficial</a></li>
+          <li><a href="https://www.kali.org/docs/" target="_blank">Kali documentation (guías)</a></li>
+          <li><a href="https://www.offensive-security.com" target="_blank">Offensive Security</a></li>
+          <li><a href="https://www.balena.io/etcher/" target="_blank">balenaEtcher</a> — crear USB booteable</li>
+        </ul>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container text-center py-3">
+      <p class="mb-0">&copy; Pedro Jiménez 2025</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
